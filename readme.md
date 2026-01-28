@@ -37,8 +37,10 @@ A **menu-driven Python console application** to manage student records using cor
 ---
 
 ## 🧪 Output Screenshots
-<img width="852" height="768" alt="Image" src="https://github.com/user-attachments/assets/5288008e-92d5-47dc-8b8d-dd96b6c70f4a" />
-
+![Collection-Manipulator](SS_1.png)
+![Collection-Manipulator](SS_2.png)
+![Collection-Manipulator](SS_3.png)
+![Collection-Manipulator](SS_4.png)
 ---
 
 ## 🎯 Learning Outcomes
