@@ -59,7 +59,8 @@ The program runs continuously until the user chooses to exit.
 ### 🔹 Screenshot 4: Deleting Student Record
 ![Delete Student](SS_4.png)
 
-
+### 🔹 Screenshot 5: Showing All Subjects Offered
+![Subjects Offered](SS_5.png)
 ---
 
 ## 🎯 Learning Outcomes

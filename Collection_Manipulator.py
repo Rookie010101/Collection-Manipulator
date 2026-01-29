@@ -97,6 +97,7 @@ while True:
                             print("New Subjects Updated Successfully!")
                         case _:
                             print("Invalid Choice")
+                print("Student ID not found...")
         case 4:
             stid = int(input("Enter the Student ID to be deleted: "))
             found = False
