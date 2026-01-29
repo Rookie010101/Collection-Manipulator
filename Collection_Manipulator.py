@@ -7,7 +7,7 @@ while True:
 3. Update Student Information
 4. Delete Student
 5. Display Subjects Offered
-6. Exit)''')
+6. Exit''')
     choice = int(input("Enter your choice: "))
     match choice:
         case 1:
@@ -15,10 +15,50 @@ while True:
             ID = int(input("Student ID: "))
             name = input("Name: ")
             age = int(input("Age: "))
-            grade = input("Grade: ")
-            DOB = input("Date of Birth (YYYY-MM-DD): ")
+            allowed_grades = ("A","B","C","D","E")
+            while True:
+                grade = input("Grade: ").upper()
+                if grade in allowed_grades:
+                    break
+                else:
+                    print("Please enter only A,B,C,D or E")
+            while True:
+                DOB = input("Date of Birth (YYYY-MM-DD): ")
+                parts = DOB.split("-")
+                if len(parts)!= 3 or len(parts[0])!=4 or len(parts[1])!=2 or len(parts[2])!=2:
+                    print("Invalid format")
+                    continue
+                else:
+                    year = int(parts[0])
+                    month = int(parts[1])
+                    date = int(parts[2])
+                if not (1<=month<=12):
+                    print("Month should be between 1 and 12")
+                current_year = 2026
+                if (current_year-year)!=age:
+                    print(f"Year: {year} doesn't match with age: {age}")
+                    continue
+                if not 5<(current_year-year)<90:
+                    print("Not Eligible for schooling")
+                    continue
+                odd_months = [1,3,5,7,8,10,12]
+                even_months = [4,6,9,11]
+                if month in odd_months:
+                    max_days = 31
+                elif month in even_months:
+                    max_days = 30
+                else:
+                    if year%4==0:
+                        max_days = 29
+                    else:
+                        max_days = 28
+                if 0<date<=max_days:
+                    break
+                else:
+                    print(f"DD: {date} is not valid")
             Sub = input("Subjects (comma-seperated): ")
-            student = {"StudentID":ID, "name":name, "age":age, "grade":grade, "DOB":DOB, "sub":Sub}
+            identity = (ID, DOB)
+            student = {"StudentID":identity[0], "name":name, "age":age, "grade":grade, "DOB":identity[1], "sub":Sub}
             students.append(student)
             print("\nStudent added successfully!")
         case 2:
@@ -70,15 +110,12 @@ while True:
                     break
         case 5:
             unique_sub = set()
-            for s in students:
-                for sub in s["sub"].split(","):
-                    unique_sub.add(sub)
-            subjects = []
-            for sub in unique_sub:
-                subjects.append(sub)
-            for sub in subjects:
-                print(f"The subjects offered are {sub}")
-                
+            for student in students:
+                subject = student["sub"].split(", ")
+                for s in subject:
+                    unique_sub.add(s)
+            unique_sub_list = list(unique_sub)
+            print(f"Unique subjects offered are: {unique_sub_list}")    
         case 6:
             print("Thankyou for using the Student Data Organizer!")
             break
